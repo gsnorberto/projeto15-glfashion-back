@@ -14,7 +14,7 @@ app.use(express.urlencoded({ extended: true }))
 
 app.use([purchaseRouter, productRouter, authRouter])
 
-let PORT = 5000
+let PORT = process.env.PORT || 5000
 app.listen(PORT, () => {
     console.log(`Servidor executando na porta ${PORT}`)
 })
