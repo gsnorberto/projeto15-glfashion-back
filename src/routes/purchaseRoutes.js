@@ -5,11 +5,9 @@ import { addPurchaseSchema, putPurchaseSchema, deletePurchaseSchema } from '../s
 
 let purchaseRouter = express.Router()
 
-// add purchase created by user
 purchaseRouter.post('/purchases', validateSchema(addPurchaseSchema), addPurchase)
 
-// get all user purchases
-purchaseRouter.get('/purchases', getPurchases)
+purchaseRouter.get('/purchases/:idUsuario', getPurchases)
 
 purchaseRouter.put('/purchases', validateSchema(putPurchaseSchema), putPurchases)
 
