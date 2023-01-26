@@ -1,7 +1,7 @@
 import db from "../config/database.js"
 import { ObjectId } from "mongodb";
 
-export async function addPurchase(req, res) {
+export async function addPurchase(req, res) { 
     try {
         const { idProduct, size, quantity } = req.body;
         //const { idUsuario } = ;
