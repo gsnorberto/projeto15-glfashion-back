@@ -1,4 +1,4 @@
-import { addUserSchema } from "../schemas/users.schema.js"
+import { addUserSchema, userValidationSchema } from "../schemas/users.schema.js"
 import { stripHtml } from "string-strip-html"
 
 export const validateNewUserData = (req, res, next) => {
@@ -9,6 +9,16 @@ export const validateNewUserData = (req, res, next) => {
 
     let data = { name, email, password, confirmPassword}
     const { error } = addUserSchema.validate(data)
+
+    if(error == null) {
+        next();
+    } else {
+        res.status(422).json({ error: "Dados inválidos" });
+    }
+}
+
+export const validateUserData = (req, res, next) => {
+    const { error } = userValidationSchema.validate(req.body)
 
     if(error == null) {
         next();
