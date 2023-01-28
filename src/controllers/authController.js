@@ -61,7 +61,7 @@ export async function signIn(req, res) {
             }
         )
 
-        let data = { token, name: user.name, _id: user._id }
+        let data = { token, name: user.name, _id: user._id, email: user.email}
 
         // successful login
         res.status(200).json(data)
