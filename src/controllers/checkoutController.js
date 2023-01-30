@@ -10,3 +10,12 @@ export async function addOrders(req, res) {
         res.status(500).send("Erro no servidor!")
     }
 }
+export async function getOrders(req, res) { 
+    try {
+        const { idUsuario } = req.params;
+        const orders = await db.collection("orders").find({ idUsuario: ObjectId(idUsuario) }).toArray()
+        res.send(orders.reverse());
+    } catch (error) {
+        res.status(500).send("Erro no servidor");
+    }
+}
