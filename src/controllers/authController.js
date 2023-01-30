@@ -39,14 +39,14 @@ export async function signIn(req, res) {
         let user = await db.collection('users').findOne({ email })
 
         // if the user does not exists
-        if (!user) return res.sendStatus(401) // unauthorized
+        if (!user) return res.status(401).send("Usuário e/ou senha inválidos") // unauthorized
 
         // check password
         const checkPassword = await bcrypt.compare(password, user.password)
 
         // invalid password
         if (!checkPassword) {
-            return res.sendStatus(401) // unauthorized
+            return res.status(401).send("Usuário e/ou senha inválidos") // unauthorized
         }
 
         // Create Token JWT
