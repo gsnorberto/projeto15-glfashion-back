@@ -10,7 +10,7 @@ dotenv.config()
 const app = express()
 
 app.use(cors({
-  origin: ['https://projeto15-glfashion-front.vercel.app', 'http://127.0.0.1:5000']
+  origin: '*'
 }))
 
 app.use(express.json())
