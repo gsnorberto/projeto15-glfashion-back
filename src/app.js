@@ -6,11 +6,13 @@ import productRouter from './routes/productRoutes.js'
 import authRouter from './routes/authRoutes.js'
 import ordersRouter from './routes/checkoutRoutes.js'
 dotenv.config()
-const corsOptions = {
-  origin: '*'
-}
+
 const app = express()
-app.use(cors(corsOptions))
+
+app.use(cors({
+  origin: ['https://projeto15-glfashion-front.vercel.app', 'http://127.0.0.1:5000']
+}))
+
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 
